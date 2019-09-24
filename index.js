@@ -104,8 +104,10 @@ const handleItemEditClicked = function() {
 const editItem = function(id) {
   console.log('give user prompt to update name');
   const index = store.items.findIndex(item => item.id === id);
-  let newName = prompt('Update the name of the list item', store.items[index].name);
-  store.items[index].name = newName;
+  if (!store.items[index].checked) {
+    let newName = prompt('Update the name of the list item', store.items[index].name);
+    store.items[index].name = newName;
+  } else alert('Checked items are not editable');
 };
 
 const getItemIdFromElement = function(item) {
